@@ -1,35 +1,16 @@
-
 const themeBtn = document.getElementById("themeBtn");
 const topBtn = document.getElementById("topBtn");
-const year = document.getElementById("year");
+document.getElementById("year").textContent = new Date().getFullYear();
 
-// Display the current year
-year.textContent = new Date().getFullYear();
-
-// Switch between light and dark themes
 themeBtn.addEventListener("click", function () {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-        themeBtn.textContent = "🌙";
-    } else {
-        themeBtn.textContent = "☀️";
-    }
+  document.body.classList.toggle("dark");
+  themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 });
 
-// Show the back-to-top button while scrolling
 window.addEventListener("scroll", function () {
-    if (window.scrollY > 300) {
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
-    }
+  topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 
-// Go back to the top of the page
 topBtn.addEventListener("click", function () {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
